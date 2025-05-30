@@ -6,6 +6,7 @@ import { extractASTNodes } from '../utils/extract-ast-nodes';
 import { getCodeFromAst } from '../utils/get-code-from-ast';
 import { getExperimentalParserPlugins } from '../utils/get-experimental-parser-plugins';
 import { getSortedNodes } from '../utils/get-sorted-nodes';
+import { isFileIncluded } from '../utils/is-file-included';
 import { isSortImportsIgnored } from '../utils/is-sort-imports-ignored';
 
 export function preprocessor(code: string, options: PrettierOptions) {
@@ -16,7 +17,17 @@ export function preprocessor(code: string, options: PrettierOptions) {
         importOrderSeparation,
         importOrderGroupNamespaceSpecifiers,
         importOrderSortSpecifiers,
+        filesToInclude,
+        filepath,
     } = options;
+
+    console.log('filesToInclude', { filesToInclude, filepath });
+    // If filesToInclude is not empty, check if current file matches any pattern
+    if (filesToInclude?.length > 0) {
+        if (!filepath || !isFileIncluded(filepath, filesToInclude)) {
+            return code;
+        }
+    }
 
     const parserOptions: ParserOptions = {
         sourceType: 'module',

@@ -92,6 +92,13 @@ used to order imports within each match group.
      * @default ["typescript", "jsx"]
      */
     importOrderParserPlugins?: ImportOrderParserPlugin[];
+
+    /**
+     * A collection of glob patterns to match against the file path.
+     *
+     * @default []
+     */
+    filesToInclude?: string[];
 }
 
 export type PrettierConfig = PluginConfig & Config;

@@ -48,6 +48,13 @@ const options = {
         default: false,
         description: 'Should specifiers be sorted?',
     },
+    filesToInclude: {
+        type: 'path',
+        category: 'Global',
+        array: true,
+        default: [{ value: [] }],
+        description: 'Provide a list of files to include in the sorting.',
+    },
 };
 
 module.exports = {
