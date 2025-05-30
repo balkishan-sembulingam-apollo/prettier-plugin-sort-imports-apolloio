@@ -21,7 +21,6 @@ export function preprocessor(code: string, options: PrettierOptions) {
         filepath,
     } = options;
 
-    console.log('filesToInclude', { filesToInclude, filepath });
     // If filesToInclude is not empty, check if current file matches any pattern
     if (filesToInclude?.length > 0) {
         if (!filepath || !isFileIncluded(filepath, filesToInclude)) {
