@@ -16,7 +16,6 @@
     "example": "prettier --config ./examples/.prettierrc --plugin lib/src/index.js",
     "test": "jest -i",
     "type-check": "tsc --noEmit",
-    "pre-commit-check": "yarn run type-check && yarn run compile && yarn run test --passWithNoTests",
     "prepublishOnly": "npm run compile && npm run test"
   },
   "keywords": [
