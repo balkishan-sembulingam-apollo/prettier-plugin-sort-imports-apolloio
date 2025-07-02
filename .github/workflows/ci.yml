@@ -12,4 +12,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: yarn --frozen-lockfile
+        env:
+          HUSKY: 0
       - run: yarn test
