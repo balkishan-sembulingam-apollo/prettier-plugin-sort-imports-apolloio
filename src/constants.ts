@@ -8,6 +8,8 @@ export const jsx: ParserPlugin = 'jsx';
 export const newLineCharacters = '\n\n';
 
 export const sortImportsIgnoredComment = 'sort-imports-ignore';
+export const sortImportsOffComment = 'sort-imports-off';
+export const sortImportsOnComment = 'sort-imports-on';
 
 /*
  * Used to mark the position between RegExps,

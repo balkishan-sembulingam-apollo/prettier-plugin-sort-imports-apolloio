@@ -302,6 +302,50 @@ function add(a: number, b: number) {
 
 `;
 
+exports[`imports-with-ignore-blocks.ts - typescript-verify: imports-with-ignore-blocks.ts 1`] = `
+// These imports should be sorted (third-party first, then relative)
+import lodash from 'lodash';
+import react from 'react';
+import './styles.css';
+import '../components/Button';
+
+// sort-imports-off
+// These imports should remain unsorted and appear at the bottom
+import './unsorted-z.css';
+import '../unsorted-a';
+import './unsorted-m.css';
+// sort-imports-on
+
+// These imports should also be sorted
+import axios from 'axios';
+import './component.css';
+
+function MyComponent() {
+    return "Test";
+} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// These imports should be sorted (third-party first, then relative)
+// These imports should also be sorted
+import axios from "axios";
+import lodash from "lodash";
+import react from "react";
+
+import "../components/Button";
+import "./component.css";
+import "./styles.css";
+
+// sort-imports-off
+// These imports should remain unsorted and appear at the bottom
+import "./unsorted-z.css";
+import "../unsorted-a";
+import "./unsorted-m.css";
+// sort-imports-on
+
+function MyComponent() {
+    return "Test";
+}
+
+`;
+
 exports[`imports-with-interpreter-directive.ts - typescript-verify: imports-with-interpreter-directive.ts 1`] = `
 #!/usr/bin/env node
 import otherthing from "@core/otherthing";

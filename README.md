@@ -200,6 +200,69 @@ with options as a JSON string of the plugin array:
 importOrderParserPlugins: []
 ```
 
+### Ignore Import Blocks
+
+Sometimes you may want to preserve the original order of certain import statements while still allowing others to be sorted. You can use special comments to mark these blocks:
+
+#### `sort-imports-off` and `sort-imports-on`
+
+Use these comments to mark import blocks that should not be sorted. These imports will:
+- Preserve their original order
+- Be placed at the bottom of all import statements
+- Not interfere with the sorting of other imports
+
+**Example:**
+
+```javascript
+// These imports will be sorted normally  
+import lodash from 'lodash';
+import react from 'react';
+import './styles.css';
+
+// sort-imports-off
+// These imports will remain unsorted and appear at the bottom
+import './legacy-styles.css';
+import '../legacy/old-component';
+import './another-legacy.css';
+// sort-imports-on
+
+// These imports will also be sorted normally
+import moment from 'moment';
+import './modern-styles.css';
+```
+
+**Output:**
+
+```javascript
+// These imports will be sorted normally
+import lodash from 'lodash';
+import moment from 'moment';
+import react from 'react';
+
+import './modern-styles.css';
+import './styles.css';
+
+// sort-imports-off
+// These imports will remain unsorted and appear at the bottom
+import './legacy-styles.css';
+import '../legacy/old-component';
+import './another-legacy.css';
+// sort-imports-on
+```
+
+**Note:** If you forget to close an ignore block with `sort-imports-on`, all remaining imports will be treated as ignored and placed at the bottom.
+
+#### `sort-imports-ignore`
+
+Use this comment at the top of your file to completely disable import sorting for the entire file:
+
+```javascript
+// sort-imports-ignore
+import './commands';
+import b from 'b';
+import a from 'a';
+```
+
 ### How does import sort work ?
 
 The plugin extracts the imports which are defined in `importOrder`. These imports are considered as _local imports_.
