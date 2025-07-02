@@ -1,0 +1,8 @@
+# Test files
+tests/
+# Build output
+lib/
+# Node modules
+node_modules/
+# Generated types
+types/ 

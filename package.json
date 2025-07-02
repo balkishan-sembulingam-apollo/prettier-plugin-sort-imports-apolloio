@@ -72,6 +72,6 @@
     }
   },
   "lint-staged": {
-    "**/*.{ts,js,json}": "bash -c 'yarn run type-check && yarn run compile && yarn run test'"
+    "src/**/*.{ts,js,json}": "bash -c 'yarn run type-check && yarn run compile && yarn run test'"
   }
 }
