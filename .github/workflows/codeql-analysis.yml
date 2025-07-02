@@ -11,6 +11,9 @@
 #
 name: "CodeQL"
 
+env:
+  HUSKY: 0
+
 on:
   push:
     branches: [ master ]
@@ -24,8 +27,6 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
-    env:
-      HUSKY: 0
     permissions:
       actions: read
       contents: read
