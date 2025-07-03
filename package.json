@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-sort-imports-apolloio",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A prettier plugins to sort imports in provided RegEx order (Fork of @trivago/prettier-plugin-sort-imports)",
   "main": "lib/src/index.js",
   "types": "types/index.d.ts",
